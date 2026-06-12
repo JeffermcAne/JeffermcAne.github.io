@@ -1,1 +1,523 @@
-# JeffermcAne.github.io
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresas Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#080808;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(15px);
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:900;
+      color:#ff2e78;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#ff2e78;
+    }
+
+    .btn{
+      padding:14px 28px;
+      background:#ff2e78;
+      border:none;
+      border-radius:50px;
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.4s;
+      text-decoration:none;
+      display:inline-block;
+      box-shadow:0 0 25px rgba(255,46,120,0.5);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.05);
+      background:#ff4f92;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 8%;
+      gap:50px;
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:#ff2e78;
+      filter:blur(180px);
+      opacity:0.3;
+      border-radius:50%;
+      top:10%;
+      left:10%;
+      animation:pulse 5s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.2)}
+      100%{transform:scale(1)}
+    }
+
+    .hero-text{
+      flex:1;
+      z-index:2;
+    }
+
+    .hero-text h1{
+      font-size:5rem;
+      line-height:1;
+      margin-bottom:20px;
+      font-weight:900;
+    }
+
+    .hero-text span{
+      color:#ff2e78;
+    }
+
+    .hero-text p{
+      color:#ccc;
+      font-size:1.2rem;
+      margin-bottom:35px;
+      max-width:600px;
+    }
+
+    .hero-img{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      z-index:2;
+    }
+
+    .hero-img img{
+      width:100%;
+      max-width:500px;
+      border-radius:40px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-20px)}
+      100%{transform:translateY(0)}
+    }
+
+    section{
+      padding:100px 8%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .title h2{
+      font-size:3rem;
+      font-weight:900;
+    }
+
+    .title p{
+      color:#aaa;
+      margin-top:10px;
+    }
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:30px;
+      overflow:hidden;
+      transition:0.5s;
+      backdrop-filter:blur(10px);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(255,46,120,0.4);
+    }
+
+    .card img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card-content h3{
+      font-size:1.8rem;
+      margin-bottom:10px;
+    }
+
+    .price{
+      color:#ff2e78;
+      font-size:1.5rem;
+      font-weight:800;
+      margin-bottom:15px;
+    }
+
+    .card-content p{
+      color:#bbb;
+      margin-bottom:20px;
+    }
+
+    .promo{
+      background:linear-gradient(135deg,#ff2e78,#ff7eb3);
+      border-radius:40px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .promo h2{
+      font-size:4rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .promo p{
+      font-size:1.2rem;
+      margin-bottom:30px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:25px;
+      transition:0.5s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.05);
+    }
+
+    .testimonials{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .review{
+      background:rgba(255,255,255,0.05);
+      padding:30px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .review h3{
+      color:#ff2e78;
+      margin-top:20px;
+    }
+
+    .contact-box{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .contact-form{
+      background:rgba(255,255,255,0.05);
+      padding:40px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:18px;
+      margin-bottom:20px;
+      background:#111;
+      border:none;
+      border-radius:15px;
+      color:white;
+      outline:none;
+    }
+
+    footer{
+      padding:40px;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#aaa;
+    }
+
+    .whatsapp{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:#25d366;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:2rem;
+      text-decoration:none;
+      color:white;
+      box-shadow:0 0 30px rgba(37,211,102,0.5);
+      z-index:999;
+      animation:bounce 2s infinite;
+    }
+
+    @keyframes bounce{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+
+    @media(max-width:900px){
+      .hero{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:3.5rem;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .promo h2{
+        font-size:2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">🍓 Fresas Premium</div>
+
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <a href="#contacto" class="btn">Ordenar</a>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <div class="hero-text">
+      <h1>LAS MEJORES <span>FRESAS CON CREMA</span> 🍓</h1>
+      <p>
+        Disfruta fresas premium con crema artesanal, chocolate, Nutella y toppings increíbles.
+        Una experiencia deliciosa que todos aman.
+      </p>
+
+      <a href="#menu" class="btn">Ver Menú</a>
+    </div>
+
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=1200&auto=format&fit=crop">
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="title">
+      <h2>Nuestro Menú 🍨</h2>
+      <p>Los productos más vendidos del momento.</p>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Fresa Supreme</h3>
+          <div class="price">$4.99</div>
+          <p>Fresas frescas con crema especial, chocolate y galleta Oreo.</p>
+          <button class="btn">Agregar 🛒</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Nutella Lover</h3>
+          <div class="price">$6.50</div>
+          <p>Mega vaso de fresas premium con Nutella y marshmallows.</p>
+          <button class="btn">Agregar 🛒</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Combo Lovers</h3>
+          <div class="price">$10.99</div>
+          <p>2 vasos gigantes + toppings ilimitados + bebida fría.</p>
+          <button class="btn">Agregar 🛒</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="promo">
+      <h2>🔥 2x1 TODOS LOS VIERNES 🔥</h2>
+      <p>Compra cualquier combo grande y recibe otro totalmente GRATIS.</p>
+      <button class="btn" style="background:black;">Aprovechar Oferta</button>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <div class="title">
+      <h2>Galería 📸</h2>
+      <p>Mira nuestros productos más virales.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=1200&auto=format&fit=crop">
+    </div>
+  </section>
+
+  <section id="clientes">
+    <div class="title">
+      <h2>Clientes Felices 💬</h2>
+      <p>Opiniones reales de nuestros clientes.</p>
+    </div>
+
+    <div class="testimonials">
+      <div class="review">
+        ⭐⭐⭐⭐⭐
+        <p>Las mejores fresas que he probado en mi vida.</p>
+        <h3>Andrea M.</h3>
+      </div>
+
+      <div class="review">
+        ⭐⭐⭐⭐⭐
+        <p>El combo de Nutella es una locura. Súper recomendado.</p>
+        <h3>Kevin R.</h3>
+      </div>
+
+      <div class="review">
+        ⭐⭐⭐⭐⭐
+        <p>Excelente atención y presentación brutal.</p>
+        <h3>Camila S.</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="contact-box">
+
+      <div>
+        <div class="title" style="text-align:left; margin-bottom:30px;">
+          <h2>Haz Tu Pedido 🍓</h2>
+          <p>Contáctanos ahora mismo.</p>
+        </div>
+
+        <p style="margin-bottom:20px;color:#ccc;">
+          📍 Centro Comercial Premium
+        </p>
+
+        <p style="margin-bottom:20px;color:#ccc;">
+          📞 +503 7777-7777
+        </p>
+
+        <p style="color:#ccc;">
+          🕒 Lunes a Domingo · 10AM - 11PM
+        </p>
+      </div>
+
+      <div class="contact-form">
+        <input type="text" placeholder="Tu Nombre">
+        <input type="text" placeholder="Tu Teléfono">
+        <textarea rows="5" placeholder="Escribe tu pedido..."></textarea>
+
+        <button class="btn" style="width:100%;">Enviar Pedido 🚀</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Fresas Premium · Página diseñada con estilo 🍓
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/50377777777" target="_blank">💬</a>
+
+</body>
+</html>
